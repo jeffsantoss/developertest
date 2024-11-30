@@ -30,7 +30,7 @@ const apiHandler = async (
                 .build()
 
     if(user.isValidPassword()) {
-        throw new ApiError(StatusCodes.UNPROCESSABLE_ENTITY, `password does not follow security policy`, 'invalid_password_policy')
+        throw new ApiError(StatusCodes.UNPROCESSABLE_ENTITY, `the password must be at least 8 characters long and include numbers and special characters `, 'invalid_password_policy')
     }
 
     await repository.create(user)

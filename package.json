@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "deploy": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s . -o ./dist && serverless deploy --stage dev --aws-profile flea",
     "deploy:local": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s . -o ./dist && serverless offline --stage local",
     "start:dynamodb": "docker run -p 8000:8000 amazon/dynamodb-local",
     "start:dynamodb-console": "AWS_REGION=local-env AWS_ACCESS_KEY_ID=mockAccessKey AWS_SECRET_ACCESS_KEY=mockSecretKey DYNAMO_ENDPOINT=http://localhost:8000 dynamodb-admin",
@@ -21,10 +22,8 @@
     "ts-node": "^10.9.2"
   },
   "dependencies": {
-    "@hapi/boom": "^10.0.1",
     "@middy/core": "^6.0.0",
     "@middy/http-json-body-parser": "^6.0.0",
-    "bcrypt": "^5.1.1",
     "builder-pattern": "^2.2.0",
     "dynamodb-onetable": "2.7.1",
     "http-status-codes": "^2.3.0",

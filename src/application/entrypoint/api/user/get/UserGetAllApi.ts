@@ -17,13 +17,11 @@ const apiHandler = async (
 
     const repository = iocContainer.get<UserRepository>(TYPES_REPOSITORY.UserRepository)
 
-    console.log(queryParams)
-
     const filter = Builder(User).id(queryParams?.id)
-    .email(queryParams?.email)
-    .name(queryParams?.name)
-    .role(EnumHelper.toEnumValue(UserRole, queryParams?.role))
-    .build()
+        .email(queryParams?.email)
+        .name(queryParams?.name)
+        .role(EnumHelper.toEnumValue(UserRole, queryParams?.role))
+        .build()
 
     const user = await repository.findByAnyField(filter)
 

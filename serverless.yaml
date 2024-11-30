@@ -1,4 +1,4 @@
-service: user-management-app
+service: user-storage-app
 
 frameworkVersion: '3'
 
@@ -16,7 +16,7 @@ provider:
     name: ${self:service}-api
   environment: 
     ENV: ${self:provider.stage}  
-    DYNAMODB_TABLE: user-management-db
+    DYNAMODB_TABLE: user-storage-db
   iamRoleStatements:
     - Effect: Allow
       Action: "dynamodb:*"
@@ -28,14 +28,14 @@ custom:
 functions:
   user-create:
     handler: ${self:custom.srcDirApi}/user/create/UserCreateApi.handler
-    name: ${self:service}-create-user
+    name: ${self:service}-user-create
     events:
       - httpApi:
           path: /users
           method: POST
   user-patch:
     handler: ${self:custom.srcDirApi}/user/update/UserPatchApi.handler
-    name: ${self:service}-patch-user
+    name: ${self:service}-user-patch
     events:
       - httpApi:
           path: /users/{userId}
@@ -46,7 +46,7 @@ functions:
                 userId: true                 
   user-get-by-id:
     handler: ${self:custom.srcDirApi}/user/get/UserGetByIdApi.handler
-    name: ${self:service}-patch-user
+    name: ${self:service}-user-get-by-id
     events:
       - httpApi:
           path: /users/{userId}
@@ -57,7 +57,7 @@ functions:
                 userId: true                                 
   user-get-all:
     handler: ${self:custom.srcDirApi}/user/get/UserGetAllApi.handler
-    name: ${self:service}-patch-user
+    name: ${self:service}-user-get-all
     events:
       - httpApi:
           path: /users

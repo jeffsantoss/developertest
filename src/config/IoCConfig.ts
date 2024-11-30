@@ -8,4 +8,3 @@ export const TYPES_REPOSITORY = {
 
 export const iocContainer = new Container();
 iocContainer.bind<UserRepository>(TYPES_REPOSITORY.UserRepository).to(UserRepository);
-console.log("TrelloCRMService registrado no container");
