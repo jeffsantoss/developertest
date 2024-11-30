@@ -10,4 +10,7 @@ export interface InputSchema {
 }
 
 export const middleware = (handler: any, inputSchema?: InputSchema) =>
-    middy(handler).use(jsonBodyParser()).use(validationMiddleware(inputSchema)).use(httpErrorHandler())
+    middy(handler)
+    .use(jsonBodyParser())
+    .use(validationMiddleware(inputSchema))
+    .use(httpErrorHandler())

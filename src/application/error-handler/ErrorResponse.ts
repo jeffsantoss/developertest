@@ -1,7 +1,7 @@
 import { APIGatewayProxyResult } from 'aws-lambda'
 import { StatusCodes } from 'http-status-codes'
 
-const doReturn = (statusCode: StatusCodes, body?: any): APIGatewayProxyResult => {
+const doReturn = (statusCode: StatusCodes, body?: any) => {    
     return {
         statusCode: statusCode.valueOf(),
         headers: {

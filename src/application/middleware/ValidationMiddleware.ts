@@ -1,4 +1,3 @@
-import { ValidationError } from 'yup'
 import { InputSchema } from './BaseMiddleware'
 import ErrorHandler from '@application/error-handler/ErrorHandler'
 import { ApiError } from '@application/error-handler/ApiError'
@@ -29,7 +28,7 @@ export const validationMiddleware = (inputSchema?: InputSchema) => {
         
             return Promise.resolve()
         } catch (error) {
-            return ErrorHandler.handleApiError(new ApiError(StatusCodes.UNPROCESSABLE_ENTITY, error?.errors?.join(" | "), "validation_error"));            
+            throw new ApiError(StatusCodes.UNPROCESSABLE_ENTITY, error?.errors?.join(" | "), "validation_error")            
         }
     }
 

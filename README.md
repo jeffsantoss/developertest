@@ -54,6 +54,9 @@ Certifique-se de ter os seguintes programas instalados em sua máquina:
 4. **Acesse a aplicação**:
    Abra seu navegador e vá para [http://localhost:3000](http://localhost:3000) ou o endereço configurado.
 
+5. **Visualize os Dados**:
+   Abra seu navegador e vá para [Console DynamoDB](http://localhost:8001) para visualizar os dados persistidos.
+
 ## Documentação da API para testar a aplicação na nuvem (AWS)
 
 A documentação completa da API está disponível no Postman. Você pode acessar as coleções de endpoints da API, incluindo detalhes sobre os métodos, parâmetros, e exemplos de respostas, no seguinte link:
