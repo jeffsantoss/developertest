@@ -3,6 +3,11 @@
 
 A aplicação em uma aplicação backend com foco em manipulação de dados de usuários. A aplicação deverá ser capaz de realizar as seguintes operações essenciais:
 
+- criar um usuário na base de dados
+- atualizar o perfil do usuário na base
+- buscar e retornar usuários da base de dados
+- filtrar usuários por um campo de busca (pelo javascript ou pela query de consulta na base)
+
 ## Índice
 
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
@@ -16,8 +21,8 @@ A aplicação em uma aplicação backend com foco em manipulação de dados de u
 ## Tecnologias Utilizadas
 
 - **Linguagem de Programação**: Node.js (versão 18.X.X ou superior) + TypeScript
-- **Framework/Plataforma**: Lambda / AWS / Middy / DynamoDB OneTable
-- **Banco de Dados**: DynamoDB
+- **Serviços AWS**: Lambda / APIGateway / DynamoDB
+- **Framework/Plataforma**: Middy / DynamoDB OneTable / Serverless Framework
 - **Ferramentas de Build**: npm
 
 ## Como Rodar a Aplicação
@@ -63,6 +68,64 @@ A documentação completa da API está disponível no Postman. Você pode acessa
 
 - [Documentação da API no Postman](https://documenter.getpostman.com/view/2057801/2sAYBYepV5)
 
+## Endpoints
+
+Antes de utilizar os endpoints, configure o valor de `{{baseUrl}}` de acordo com o ambiente desejado:
+
+- **Ambiente local:** `http://localhost:3000`
+- **Ambiente dev:** `https://gjlytlxcv9.execute-api.us-east-1.amazonaws.com`
+
+Basta substituir `{{baseUrl}}` pelo URL correspondente.
+
+### 1. **Criar Usuário**
+**Descrição:** Cria um novo usuário no sistema.
+
+- **Método:** `POST`
+- **URL:** `{{baseUrl}}/users`
+- **Body:** 
+  ```json
+  {
+      "name": "Jefferson",
+      "email": "jefferson.npng1@gmail.com",
+      "role": "admin",
+      "password": "abcD/123"
+  }
+  ```
+
+---
+
+### 2. **Atualizar Usuário (PATCH)**
+**Descrição:** Atualiza informações de um usuário específico.
+
+- **Método:** `PATCH`
+- **URL:** `{{baseUrl}}/users/4416f353-aa7a-4ee4-b467-bfb976ba6539`
+- **Cabeçalhos:** Nenhum
+- **Body:**
+  ```json
+  {
+      "role": "client",
+      "name": "Jefferson Updated"
+  }
+  ```
+---
+
+### 3. **Buscar Usuário por ID**
+**Descrição:** Recupera as informações de um usuário específico pelo ID.
+
+- **Método:** `GET`
+- **URL:** `{{baseUrl}}/users/4416f353-aa7a-4ee4-b467-bfb976ba6539`
+- **Cabeçalhos:** Nenhum
+- **Body:** Não aplicável.
+- **Respostas:** Nenhuma resposta configurada.
+
+---
+
+### 4. **Listar Todos os Usuários**
+**Descrição:** Recupera uma lista de usuários com base em critérios de filtro.
+
+- **Método:** `GET`
+- **URL:** `{{baseUrl}}/users?name=Jefferson&role=admin`
+
 ## Como Contribuir
 
 1. Faça um fork deste repositório.
@@ -81,10 +144,12 @@ A documentação completa da API está disponível no Postman. Você pode acessa
 
 5. Abra um Pull Request.
 
-## Possíveis Melhorias
+## Próximos Passos
 
-- [ ] Adicionar autenticação de usuários (exemplo: OAuth2)
-- [ ] Implementar testes automatizados com [exemplo: Jest, Mocha]
+- [WIP] Implementar testes unitários e integrados com [exemplo: Jest, Mocha]
+- [ ] Adicionar autenticação de usuários (exemplo: OAuth2 com client credentials)
+- [ ] Criar domínio customizado para associar ao API Gateway
 - [ ] Paginação na rota para filtrar os usuários
-- [ ] Adicionar correlation id para tracking de requisição
+- [ ] Adicionar correlation id e estruturar logs para troubleshooting mais eficiente
+- [ ] Observabilidade
 - [ ] Implementar deploy contínuo com análise estática de código e execução dos testes automatizados [exemplo: GitHub Actions]

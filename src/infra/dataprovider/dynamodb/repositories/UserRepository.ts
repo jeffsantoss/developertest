@@ -4,7 +4,6 @@ import { oneTableDbSchema, oneTableEntities } from "../Entities";
 import { getDbConnection } from "../DbConnection";
 import { User, UserRole } from "@domain/User";
 import { Builder } from "builder-pattern";
-import { EnumValueMappee } from 'ts-enum-util';
 import { EnumHelper } from "@infra/helper/EnumHelper";
 
 export type UserEntity = Entity<typeof oneTableDbSchema.models.User>
@@ -27,15 +26,10 @@ export class UserRepository {
     public async findByAnyField(user: User): Promise<User[]> {
         const connection = await this.getConnection();
 
-        console.log(JSON.stringify(user))
-
         const whereClause = Object.keys(user)
             .map(key => user[key] != null ? `(\${${key}} = {${user[key]}})` : '') // Aqui escapamos o '$' com '\${}'
             .filter(condition => condition !== '')
             .join(' AND ');
-
-
-        console.log(whereClause)
 
         const filtered = await connection.find({}, { where: whereClause })
 
