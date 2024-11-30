@@ -1,0 +1,64 @@
+service: user-management-app
+
+frameworkVersion: '3'
+
+plugins:
+  - serverless-offline
+  - serverless-dynamodb-local
+provider:
+  name: aws
+  runtime: nodejs18.x
+  versionFunctions: false
+  stage: ${opt:stage, 'dev'}
+  region: us-east-1
+  memorySize: 256  
+  httpApi:
+    name: ${self:service}-api
+  environment: 
+    ENV: ${self:provider.stage}  
+    DYNAMODB_TABLE: user-management-db
+  iamRoleStatements:
+    - Effect: Allow
+      Action: "dynamodb:*"
+      Resource: "*"
+
+custom:
+  srcDirApi: dist/src/application/entrypoint/api
+
+functions:
+  user-create:
+    handler: ${self:custom.srcDirApi}/user/create/UserCreateApi.handler
+    name: ${self:service}-create-user
+    events:
+      - httpApi:
+          path: /users
+          method: POST
+  user-patch:
+    handler: ${self:custom.srcDirApi}/user/update/UserPatchApi.handler
+    name: ${self:service}-patch-user
+    events:
+      - httpApi:
+          path: /users/{userId}
+          method: PATCH
+          request: 
+            parameters:
+              paths:
+                userId: true                 
+  user-get-by-id:
+    handler: ${self:custom.srcDirApi}/user/get/UserGetByIdApi.handler
+    name: ${self:service}-patch-user
+    events:
+      - httpApi:
+          path: /users/{userId}
+          method: GET     
+          request: 
+            parameters:
+              paths:
+                userId: true                                 
+  user-get-all:
+    handler: ${self:custom.srcDirApi}/user/get/UserGetAllApi.handler
+    name: ${self:service}-patch-user
+    events:
+      - httpApi:
+          path: /users
+          method: GET           

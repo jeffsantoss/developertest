@@ -1,0 +1,42 @@
+{
+  "name": "developertestpantore",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "deploy:local": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s . -o ./dist && serverless offline --stage local",
+    "start:dynamodb": "docker run -p 8000:8000 amazon/dynamodb-local",
+    "start:dynamodb-console": "AWS_REGION=local-env AWS_ACCESS_KEY_ID=mockAccessKey AWS_SECRET_ACCESS_KEY=mockSecretKey DYNAMO_ENDPOINT=http://localhost:8000 dynamodb-admin",
+    "start:all": "concurrently \"npm run deploy:local\" \"npm run start:dynamodb\" \"npm run start:dynamodb-console\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "serverless": "^3.39.0",
+    "serverless-dynamodb-local": "^0.2.40",
+    "serverless-offline": "^12.0.4",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "@hapi/boom": "^10.0.1",
+    "@middy/core": "^6.0.0",
+    "@middy/http-json-body-parser": "^6.0.0",
+    "bcrypt": "^5.1.1",
+    "builder-pattern": "^2.2.0",
+    "dynamodb-onetable": "2.7.1",
+    "http-status-codes": "^2.3.0",
+    "inversify": "^6.1.4",
+    "middy": "^0.36.0",
+    "ts-enum-util": "^4.1.0",
+    "uuid": "^11.0.3",
+    "yup": "^1.4.0"
+  },
+  "overrides": {
+    "serverless-dynamodb-local": {
+      "dynamodb-localhost": "https://github.com/99x/dynamodb-localhost#db30898f8c40932c7177be7b2f1a81360d12876d"
+    }
+  }
+}
