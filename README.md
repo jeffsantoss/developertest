@@ -57,7 +57,7 @@ Certifique-se de ter os seguintes programas instalados em sua máquina:
    ```
 
 4. **Acesse a aplicação**:
-   Abra seu navegador e vá para [http://localhost:3000](http://localhost:3000) ou o endereço configurado.
+   A API estará em execução em [http://localhost:3000](http://localhost:3000)
 
 5. **Visualize os Dados**:
    Abra seu navegador e vá para [Console DynamoDB](http://localhost:8001) para visualizar os dados persistidos.
