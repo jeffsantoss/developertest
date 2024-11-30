@@ -27,7 +27,7 @@ export class UserRepository {
         const connection = await this.getConnection();
 
         const whereClause = Object.keys(user)
-            .map(key => user[key] != null ? `(\${${key}} = {${user[key]}})` : '') // Aqui escapamos o '$' com '\${}'
+            .map(key => user[key] != null ? `(\${${key}} = {${user[key]}})` : '')
             .filter(condition => condition !== '')
             .join(' AND ');
 

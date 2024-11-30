@@ -6,21 +6,20 @@ A aplicação em uma aplicação backend com foco em manipulação de dados de u
 - criar um usuário na base de dados
 - atualizar o perfil do usuário na base
 - buscar e retornar usuários da base de dados
-- filtrar usuários por um campo de busca (pelo javascript ou pela query de consulta na base)
+- filtrar usuários por qualquer atributo
 
 ## Índice
 
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Como Rodar a Aplicação](#como-rodar-a-aplicação)
 - [Documentação da API](#documentação-da-api)
-- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Endpoints](#endpoints)
 - [Como Contribuir](#como-contribuir)
-- [Possíveis Melhorias](#possíveis-melhorias)
-- [Licença](#licença)
+- [Próximos Passos](#possíveis-melhorias)
 
 ## Tecnologias Utilizadas
 
-- **Linguagem de Programação**: Node.js (versão 18.X.X ou superior) + TypeScript
+- **Linguagem de Programação**: Node.js (versão 18.X.X) + TypeScript
 - **Serviços AWS**: Lambda / APIGateway / DynamoDB
 - **Framework/Plataforma**: Middy / DynamoDB OneTable / Serverless Framework
 - **Ferramentas de Build**: npm
@@ -31,7 +30,7 @@ A aplicação em uma aplicação backend com foco em manipulação de dados de u
 
 Certifique-se de ter os seguintes programas instalados em sua máquina:
 
-- [Node.js](https://nodejs.org) - Versão 18.X.X ou superior
+- [Node.js](https://nodejs.org) - Versão 18.X.X
 - [npm](https://www.npmjs.com)
 - [docker](https://www.docker.com/)
 
@@ -99,7 +98,6 @@ Basta substituir `{{baseUrl}}` pelo URL correspondente.
 
 - **Método:** `PATCH`
 - **URL:** `{{baseUrl}}/users/4416f353-aa7a-4ee4-b467-bfb976ba6539`
-- **Cabeçalhos:** Nenhum
 - **Body:**
   ```json
   {
@@ -114,9 +112,6 @@ Basta substituir `{{baseUrl}}` pelo URL correspondente.
 
 - **Método:** `GET`
 - **URL:** `{{baseUrl}}/users/4416f353-aa7a-4ee4-b467-bfb976ba6539`
-- **Cabeçalhos:** Nenhum
-- **Body:** Não aplicável.
-- **Respostas:** Nenhuma resposta configurada.
 
 ---
 
@@ -147,9 +142,9 @@ Basta substituir `{{baseUrl}}` pelo URL correspondente.
 ## Próximos Passos
 
 - [WIP] Implementar testes unitários e integrados com [exemplo: Jest, Mocha]
-- [ ] Adicionar autenticação de usuários (exemplo: OAuth2 com client credentials)
-- [ ] Criar domínio customizado para associar ao API Gateway
+- [ ] Adicionar autenticação de usuários (exemplo: OAuth2 com JWT - Cognito?)
 - [ ] Paginação na rota para filtrar os usuários
 - [ ] Adicionar correlation id e estruturar logs para troubleshooting mais eficiente
 - [ ] Observabilidade
+- [ ] Criar domínio customizado para associar ao API Gateway
 - [ ] Implementar deploy contínuo com análise estática de código e execução dos testes automatizados [exemplo: GitHub Actions]

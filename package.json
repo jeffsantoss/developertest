@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "deploy": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s . -o ./dist && serverless deploy --stage dev --aws-profile flea",
+    "deploy": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s . -o ./dist && serverless deploy --stage {{yourStage}} --aws-profile {{yourProfile}}",
     "deploy:local": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s . -o ./dist && serverless offline --stage local",
     "start:dynamodb": "docker run -p 8000:8000 amazon/dynamodb-local",
     "start:dynamodb-console": "AWS_REGION=local-env AWS_ACCESS_KEY_ID=mockAccessKey AWS_SECRET_ACCESS_KEY=mockSecretKey DYNAMO_ENDPOINT=http://localhost:8000 dynamodb-admin",
