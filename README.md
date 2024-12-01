@@ -1,7 +1,7 @@
 
 # Teste técnico backend 🏔️
 
-A aplicação em uma aplicação backend com foco em manipulação de dados de usuários. A aplicação deverá ser capaz de realizar as seguintes operações essenciais:
+A aplicação é um backend com foco na manipulação de dados de usuários e deverá ser capaz de realizar as seguintes operações:
 
 - criar um usuário na base de dados
 - atualizar o perfil do usuário na base
