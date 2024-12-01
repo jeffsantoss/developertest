@@ -119,6 +119,8 @@ Basta substituir `{{baseUrl}}` pelo URL correspondente.
 ### 4. **Listar Todos os Usuários**
 **Descrição:** Recupera uma lista de usuários com base em critérios de filtro.
 
+## Possíveis erros
+
 - **Método:** `GET`
 - **URL:** `{{baseUrl}}/users?name=Jefferson&role=admin`
 
