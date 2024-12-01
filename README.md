@@ -141,7 +141,7 @@ Basta substituir `{{baseUrl}}` pelo URL correspondente.
 
 ## Próximos Passos
 
-- [WIP] Implementar testes unitários e integrados com [exemplo: Jest, Mocha]
+- [**WIP**] Implementar testes unitários e integrados com [exemplo: Jest, Mocha]
 - [ ] Adicionar autenticação de usuários (exemplo: OAuth2 com JWT - Cognito?)
 - [ ] Paginação na rota para filtrar os usuários
 - [ ] Adicionar correlation id e estruturar logs para troubleshooting mais eficiente
