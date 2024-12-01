@@ -1,10 +1,10 @@
 import { Entity } from "dynamodb-onetable";
 import { injectable } from "inversify";
 import { oneTableDbSchema, oneTableEntities } from "../Entities";
-import { getDbConnection } from "../DbConnection";
 import { User, UserRole } from "@domain/User";
 import { Builder } from "builder-pattern";
 import { EnumHelper } from "@infra/helper/EnumHelper";
+import { getDynamoDBConnection } from "../DynamoDBConnection";
 
 export type UserEntity = Entity<typeof oneTableDbSchema.models.User>
 
@@ -14,6 +14,12 @@ export class UserRepository {
     public async getById(id: string): Promise<User> {
         const connection = await this.getConnection();
         const user = await connection.get({ id }, { index: 'gs1', follow: true })
+        return this.toDomain(user)
+    }
+
+    public async getByEmail(email: string): Promise<User> {
+        const connection = await this.getConnection();
+        const user = await connection.get({ email }, { index: 'gs2', follow: true })
         return this.toDomain(user)
     }
 
@@ -43,7 +49,7 @@ export class UserRepository {
     }
 
     private async getConnection() {
-        return (await getDbConnection()).getModelFor(oneTableEntities.User);
+        return (await getDynamoDBConnection()).getModelFor(oneTableEntities.User);
     }
 
     private toDomain(entity: UserEntity): User {

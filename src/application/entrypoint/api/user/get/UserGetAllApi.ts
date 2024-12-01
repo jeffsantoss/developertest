@@ -10,7 +10,7 @@ import { Builder } from 'builder-pattern';
 import { User, UserRole } from '@domain/User';
 import { EnumHelper } from '@infra/helper/EnumHelper';
 
-const apiHandler = async (
+export const getAllUsersUseCase = async (
     event: MiddyApiGatewayEvent<undefined, undefined, UserGetAllRequest>
 ): Promise<APIGatewayProxyResult> => {
     const queryParams = event.queryStringParameters
@@ -29,6 +29,6 @@ const apiHandler = async (
 };
 
 export const handler = middleware(
-    HandlerWrapper.wrap(apiHandler),
+    HandlerWrapper.wrap(getAllUsersUseCase),
     { queryString: getAllUserSchema }
 );

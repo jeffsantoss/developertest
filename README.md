@@ -1,12 +1,7 @@
 
 # Teste técnico backend 🏔️
 
-A aplicação é um backend com foco na manipulação de dados de usuários e deverá ser capaz de realizar as seguintes operações:
-
-- criar um usuário na base de dados
-- atualizar o perfil do usuário na base
-- buscar e retornar usuários da base de dados
-- filtrar usuários por qualquer atributo
+A aplicação é um serviço backend, implantado na AWS, focado na manipulação de dados de usuários. Sua arquitetura permite execução local, garantindo flexibilidade para desenvolvimentoe e testes, enquanto aproveita os benefícios de escalabilidade e alta disponibilidade da nuvem.
 
 ## Índice
 
@@ -55,6 +50,12 @@ Certifique-se de ter os seguintes programas instalados em sua máquina:
    npm run start:all
    ```
 
+3. **Execução testes unitários**:
+   Para rodar os testes da aplicação, execute:
+   ```bash
+   npm run test
+   ```   
+
 4. **Acesse a aplicação**:
    A API estará em execução em [http://localhost:3000](http://localhost:3000)
 
@@ -97,7 +98,7 @@ Basta substituir `{{baseUrl}}` pelo URL correspondente.
 **Descrição:** Atualiza informações de um usuário específico.
 
 - **Método:** `PATCH`
-- **URL:** `{{baseUrl}}/users/4416f353-aa7a-4ee4-b467-bfb976ba6539`
+- **URL:** `{{baseUrl}}/users/e4ba318a-b44c-44f8-9b5b-07153b65165d`
 - **Body:**
   ```json
   {
@@ -111,7 +112,7 @@ Basta substituir `{{baseUrl}}` pelo URL correspondente.
 **Descrição:** Recupera as informações de um usuário específico pelo ID.
 
 - **Método:** `GET`
-- **URL:** `{{baseUrl}}/users/4416f353-aa7a-4ee4-b467-bfb976ba6539`
+- **URL:** `{{baseUrl}}/users/e4ba318a-b44c-44f8-9b5b-07153b65165d`
 
 ---
 
@@ -120,6 +121,16 @@ Basta substituir `{{baseUrl}}` pelo URL correspondente.
 
 - **Método:** `GET`
 - **URL:** `{{baseUrl}}/users?name=Jefferson&role=admin`
+
+| **Método**                       | **Status de Erro** | **Descrição**                                                                 |
+|-----------------------------------|--------------------|-------------------------------------------------------------------------------|
+| **Criar Usuário (POST)**          | 422 Unprocessable Entity    | Corpo da requisição malformado (dados inválidos ou campos obrigatórios ausentes). |
+|                                   | 409 Conflict       | Usuário com o mesmo email já existe.                                          |
+| **Atualizar Usuário (PATCH)**     | 422 Unprocessable Entity    | Corpo da requisição malformado (dados inválidos ou campos obrigatórios ausentes). |
+|                                   | 404 Not Found      | Usuário com o ID fornecido não encontrado.                                    |
+| **Buscar Usuário por ID (GET)**   | 404 Not Found      | Usuário com o ID fornecido não encontrado.                                    |
+| **Listar Todos os Usuários (GET)**| 422 Unprocessable Entity    | Corpo da requisição malformado (dados inválidos ou campos obrigatórios ausentes). |
+|                                   | 500 Internal Server Error | Erro interno no servidor ao tentar recuperar os dados.                        |
 
 ## Como Contribuir
 
@@ -141,7 +152,7 @@ Basta substituir `{{baseUrl}}` pelo URL correspondente.
 
 ## Próximos Passos
 
-- [**WIP**] Implementar testes unitários e integrados com [exemplo: Jest, Mocha]
+- [WIP] Implementar testes unitários e integrados com [exemplo: Jest, Mocha]
 - [ ] Adicionar autenticação de usuários (exemplo: OAuth2 com JWT - Cognito?)
 - [ ] Paginação na rota para filtrar os usuários
 - [ ] Adicionar correlation id e estruturar logs para troubleshooting mais eficiente

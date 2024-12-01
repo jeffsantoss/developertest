@@ -9,7 +9,7 @@ import { StatusCodes } from 'http-status-codes';
 import { ok } from '@application/error-handler/ErrorResponse';
 import { GetUserByIdRequest, getUserByIdRequest } from '../get/UserGetByIdRequest';
 
-const apiHandler = async (
+export const getUserByIdUseCase = async (
     event: MiddyApiGatewayEvent<undefined, GetUserByIdRequest, undefined>
 ): Promise<APIGatewayProxyResult> => {
     const path = event.pathParameters
@@ -26,6 +26,6 @@ const apiHandler = async (
 };
 
 export const handler = middleware(
-    HandlerWrapper.wrap(apiHandler),
+    HandlerWrapper.wrap(getUserByIdUseCase),
     { pathVar: getUserByIdRequest }
 );

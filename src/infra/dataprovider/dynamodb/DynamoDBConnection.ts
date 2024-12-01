@@ -5,7 +5,7 @@ import { env } from 'process'
 import { v4 } from 'uuid'
 import { oneTableDbSchema } from './Entities'
 
-export default class DbConnection {
+export default class DynamoDBConnection {
     table: Table
     client: Dynamo
     region = 'us-east-1'
@@ -74,20 +74,20 @@ export default class DbConnection {
 
     getModelFor = (entity: string) => this.table.getModel(entity)
 
-    static init = async (tableName: string, schema: OneSchema): Promise<DbConnection> => {
-        const client = new DbConnection(tableName, schema)
+    static init = async (tableName: string, schema: OneSchema): Promise<DynamoDBConnection> => {
+        const client = new DynamoDBConnection(tableName, schema)
         // Descomentar para criar a tablea de acordo com o schema..
         await client.createTableHandler()
         return client
     }
 }
 
-export const getDbConnection = async (): Promise<DbConnection> => {
+export const getDynamoDBConnection = async (): Promise<DynamoDBConnection> => {
     const dbName = process.env.DYNAMODB_TABLE
 
-    return await DbConnection.init(dbName, oneTableDbSchema)
+    return await DynamoDBConnection.init(dbName, oneTableDbSchema)
 }
 
-export const transactOnDb = async (transaction: any) => (await getDbConnection()).table.transact('write', transaction)
+export const transactOnDb = async (transaction: any) => (await getDynamoDBConnection()).table.transact('write', transaction)
 
 
