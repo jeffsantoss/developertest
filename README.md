@@ -132,7 +132,7 @@ Basta substituir `{{baseUrl}}` pelo URL correspondente.
 |                                   | 404 Not Found      | Usuário com o ID fornecido não encontrado.                                    |
 | **Buscar Usuário por ID (GET)**   | 404 Not Found      | Usuário com o ID fornecido não encontrado.                                    |
 | **Listar Todos os Usuários (GET)**| 422 Unprocessable Entity    | Corpo da requisição malformado (dados inválidos ou campos obrigatórios ausentes). |
-|                                   | 500 Internal Server Error | Erro interno no servidor ao tentar recuperar os dados.                        |
+|                                   | 500 Internal Server Error | Erro interno ao se comunicar com o servidor.                        |
 
 ## Como Contribuir
 
