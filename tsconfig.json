@@ -3,7 +3,7 @@
     "target": "es2017",
     "module": "commonjs",
     "lib": ["es6", "dom"],
-    "types": ["reflect-metadata"],
+    "types": ["reflect-metadata", "jest"],
     "allowJs": true,
     "rootDir": "./",
     "outDir": "./dist",
@@ -28,6 +28,6 @@
       "@application/*": ["src/application/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/**/*.ts", "src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/**/**/*.ts", "src/**/*.ts", "src/**/**/*.test.ts, src/**/*.test.ts"],
   "exclude": ["node_modules", "dist"]
 }

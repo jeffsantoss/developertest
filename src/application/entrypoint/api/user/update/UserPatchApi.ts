@@ -11,7 +11,7 @@ import { PatchUserRequest, patchUserSchema } from './UserPatchRequest';
 import { GetUserByIdRequest, getUserByIdRequest } from '../get/UserGetByIdRequest';
 
 
-const apiHandler = async (
+export const patchUserUseCase = async (
     event: MiddyApiGatewayEvent<PatchUserRequest, GetUserByIdRequest>
 ): Promise<APIGatewayProxyResult> => {
     const body = event.body
@@ -36,6 +36,6 @@ const apiHandler = async (
 };
 
 export const handler = middleware(
-    HandlerWrapper.wrap(apiHandler),
+    HandlerWrapper.wrap(patchUserUseCase),
     { body: patchUserSchema, pathVar: getUserByIdRequest }
 );
