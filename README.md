@@ -154,8 +154,9 @@ Basta substituir `{{baseUrl}}` pelo URL correspondente.
 
 ## Próximos Passos
 
-- [WIP] Implementar testes unitários e integrados com [exemplo: Jest, Mocha]
-- [ ] Adicionar autenticação de usuários (exemplo: OAuth2 com JWT - Cognito?)
+- [WIP] Melhorar cobertura dos testes unitários e implementar testes
+- [ ] Configurar Lint e prettier no projeto para padronizar e deixar o código organizado
+- [ ] Adicionar autenticação de usuários (exemplo: OAuth2 e/ou OpenID)
 - [ ] Paginação na rota para filtrar os usuários
 - [ ] Adicionar correlation id e estruturar logs para troubleshooting mais eficiente
 - [ ] Observabilidade
