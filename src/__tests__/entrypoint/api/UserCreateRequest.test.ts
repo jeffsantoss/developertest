@@ -1,24 +1,22 @@
+import { createUserSchema } from '@application/entrypoint/api/user/create/UserCreateRequest';
 import { UserRole } from '@domain/User';
 import { ValidationError } from 'yup';
-import { createUserSchema } from './UserCreateRequest';
 
 describe('create user schema validation test', () => {
-  it('should validate a correct user creation request', async () => {
-    const validUser = {
-      name: 'Jeff S',
-      email: 'jeff.s@example.com',
-      password: 'password123',
-      role: UserRole.Admin, 
-    };
+  const validUser = {
+    name: 'Jeff S',
+    email: 'jeff.s@example.com',
+    password: 'Password@123',
+    role: UserRole.Admin, 
+  };
 
+  it('should validate a correct user creation request', async () => {
     await expect(createUserSchema.isValid(validUser)).resolves.toBe(true);
   });
 
   it('should throw an error if required fields are missing', async () => {
     const invalidUser = {
-      name: '',
-      email: 'invalidemail.com',
-      password: '',
+      ...validUser,
       role: 'invalid-role',
     };
 
@@ -27,24 +25,29 @@ describe('create user schema validation test', () => {
 
   it('should throw an error for an invalid email', async () => {
     const invalidUser = {
-      name: 'Jef S',
+      ...validUser,
       email: 'invalid-email',
-      password: 'password123',
-      role: UserRole.Client,
     };
 
-    await expect(createUserSchema.validate(invalidUser)).rejects.toThrowError(ValidationError);
+    await expect(createUserSchema.validate(invalidUser)).rejects.toThrow(ValidationError);
   });
 
   it('should throw an error for an invalid role', async () => {
     const invalidUser = {
-      name: 'Jef s',
-      email: 'jeff.s@example.com',
-      password: 'password123',
+      ...validUser,
       role: 'invalid-role', 
     };
 
-    await expect(createUserSchema.validate(invalidUser)).rejects.toThrowError(ValidationError);
+    await expect(createUserSchema.validate(invalidUser)).rejects.toThrow(ValidationError);
+  });
+
+  it('should throw an error for an invalid password policy', async () => {
+    const invalidUser = {
+      ...validUser,
+      role: '123456', 
+    };
+
+    await expect(createUserSchema.validate(invalidUser)).rejects.toThrow(ValidationError);
   });
 
   it('should throw an error for missing required fields', async () => {
@@ -55,6 +58,7 @@ describe('create user schema validation test', () => {
       role: '', 
     };
 
-    await expect(createUserSchema.validate(invalidUser)).rejects.toThrowError(ValidationError);
+    await expect(createUserSchema.validate(invalidUser)).rejects.toThrow(ValidationError);
   });
+
 });

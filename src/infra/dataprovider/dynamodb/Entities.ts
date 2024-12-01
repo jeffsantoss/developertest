@@ -4,6 +4,8 @@ export const oneTableDbSchema = {
     indexes: {
         primary: { hash: 'pk', sort: 'sk' },
         gs1: { hash: 'gs1pk', sort: 'gs1sk', project: 'keys', follow: false },
+        gs2: { hash: 'gs2pk', sort: 'gs2sk', project: 'keys', follow: false },
+
     },
     models: {
         User: {
@@ -18,6 +20,9 @@ export const oneTableDbSchema = {
             updatedAt: { type: Number, require: false },            
             gs1pk: { type: String, value: '${_type}:${id}' },
             gs1sk: { type: String, value: '${_type}:${createdAt}' },
+
+            gs2pk: { type: String, value: '${_type}:${email}' },
+            gs2sk: { type: String, value: '${_type}:${createdAt}' },
         }
     },
 }

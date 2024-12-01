@@ -1,8 +1,8 @@
 import { APIGatewayProxyEventV2 } from 'aws-lambda'
 
 export interface MiddyApiGatewayEvent<BodyType = any, PathVarType = any, QueryType = any>
-    extends Omit<APIGatewayProxyEventV2, 'body' | 'queryStringParameteres' | 'pathParameters'> {
+    extends Omit<APIGatewayProxyEventV2, 'body' | 'queryStringParameters' | 'pathParameters'> {
     body: BodyType
-    queryStringParameteres: QueryType
+    queryStringParameters: QueryType
     pathParameters: PathVarType
 }

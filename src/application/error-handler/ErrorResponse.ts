@@ -26,6 +26,8 @@ export const badRequest = (reason: string, name: string) => doErrorReturn(Status
 
 export const notFound = (reason: string, name: string) => doErrorReturn(StatusCodes.NOT_FOUND, reason, name || "resource_not_found")
 
+export const conflict = (reason: string, name: string) => doErrorReturn(StatusCodes.CONFLICT, reason, name || "conflict")
+
 export const unprocessableEntity = (reason: string, name: string) => doErrorReturn(StatusCodes.UNPROCESSABLE_ENTITY, reason, name || "validation_error")
 
 type StatusHandlerFunction = (message: string, name: string) => APIGatewayProxyResult
@@ -37,7 +39,7 @@ interface StatusHandler {
 export const StatusHandler: StatusHandler = {
     [StatusCodes.BAD_REQUEST]: badRequest,
     [StatusCodes.UNPROCESSABLE_ENTITY]: unprocessableEntity,
-    [StatusCodes.NOT_FOUND]: notFound
-
+    [StatusCodes.NOT_FOUND]: notFound,
+    [StatusCodes.CONFLICT]: conflict
 }
 

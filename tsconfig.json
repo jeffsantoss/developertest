@@ -25,7 +25,8 @@
       "@constants/*": ["src/constants/*"],
       "@domain/*": ["src/domain/*"],
       "@config/*": ["src/config/*"],
-      "@application/*": ["src/application/*"]
+      "@application/*": ["src/application/*"],
+      "@tests/*": ["src/__tests__/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/**/*.ts", "src/**/*.ts", "src/**/**/*.test.ts, src/**/*.test.ts"],
