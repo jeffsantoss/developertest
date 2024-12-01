@@ -11,6 +11,6 @@ module.exports = {
         "^@tests/(.*)$": "<rootDir>/src/__tests__/$1",
     },
     testMatch: ['**/src/**/*.test.ts'],
-    setupFilesAfterEnv: ['<rootDir>/src/__tests__/jestSetup.ts'],
+    setupFilesAfterEnv: ['<rootDir>/src/__tests__/JestSetup.ts'],
     maxWorkers: 1
 };

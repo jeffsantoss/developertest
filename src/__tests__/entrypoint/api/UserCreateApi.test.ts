@@ -5,7 +5,7 @@ import { SecurityHelper } from "@infra/helper/SecurityHelper";
 import { ApiError } from "@application/error-handler/ApiError";
 import { UserRole } from "@domain/User";
 import { createUserUseCase } from "@application/entrypoint/api/user/create/UserCreateApi";
-import { mockUserRepository } from "@tests/jestSetup";
+import { mockUserRepository } from "@tests/JestSetup";
 
 describe('User Create Handler', () => {
     const mockRequest = {

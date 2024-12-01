@@ -3,7 +3,7 @@ import { UserRole } from "@domain/User";
 import { APIGatewayProxyResult } from "aws-lambda";
 import { MiddyApiGatewayEvent } from "@application/entrypoint/api/ApiGatewayEvent";
 import { getAllUsersUseCase } from "@application/entrypoint/api/user/get/UserGetAllApi";
-import { mockUserRepository } from "@tests/jestSetup";
+import { mockUserRepository } from "@tests/JestSetup";
 
 describe('User Get All Handler', () => {
     const mockUsers = [

@@ -1,7 +1,7 @@
 import { ApiError } from "@application/error-handler/ApiError";
 import { StatusCodes } from "http-status-codes";
 import { APIGatewayProxyResult } from "aws-lambda";
-import { mockUserRepository } from "@tests/jestSetup";
+import { mockUserRepository } from "@tests/JestSetup";
 import { getUserByIdUseCase } from "@application/entrypoint/api/user/get/UserGetByIdApi";
 import { MiddyApiGatewayEvent } from "@application/entrypoint/api/ApiGatewayEvent";
 

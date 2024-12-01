@@ -3,7 +3,7 @@ import { StatusCodes } from "http-status-codes";
 import { MiddyApiGatewayEvent } from "../../../application/entrypoint/api/ApiGatewayEvent";
 import { patchUserUseCase } from "../../../application/entrypoint/api/user/update/UserPatchApi";
 import { UserRole } from "@domain/User";
-import { mockUserRepository } from "@tests/jestSetup";
+import { mockUserRepository } from "@tests/JestSetup";
 
 describe('User Patch Handler', () => {
     const mockUser = {
