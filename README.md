@@ -10,7 +10,7 @@ A aplicação é um serviço backend, implantado na AWS, focado na manipulação
 - [Documentação da API](#documentação-da-api)
 - [Endpoints](#endpoints)
 - [Como Contribuir](#como-contribuir)
-- [Próximos Passos](#possíveis-melhorias)
+- [Próximos Passos](#próximos-passos)
 
 ## Tecnologias Utilizadas
 
